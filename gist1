@@ -1,0 +1,35 @@
+{
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url":  "https://raw.githubusercontent.com/Tenglon/visualisation/main/NSW_5pct.json",
+    "format": {
+      "type": "topojson",
+      "feature": "POA_2016_AUST"
+    }
+  },
+  "transform": [{
+    "lookup": "postcode",
+    "from": {
+      "data": {
+        "url": "https://raw.githubusercontent.com/Tenglon/visualisation/main/confirmed_cases_count_by_postcode.tsv"
+      },
+      "key": "postcode",
+      "fields": ["confirmed_cases_count"]
+    }
+  }],
+  "projection": {
+    "type": "equalEarth"
+  },
+  "mark": "geoshape",
+  "encoding": {
+    "color": {
+      "type": "quantitative",
+      // "field": "confirmed_cases_count"
+      // "scale": {
+        // "domainMid": 3250,
+        // "range": "diverging"
+      // }
+    }
+  }
+}
