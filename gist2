@@ -1,0 +1,37 @@
+{
+  "width": 500,
+  "height": 300,
+  "data": {
+    "url": "data/us-10m.json",
+    "format": {
+      "type": "topojson",
+      "feature":"counties",
+    }
+  },
+  "transform": [{
+    "lookup": "id",
+    "from": {
+      "data": {
+        "url": "data/unemployment.tsv"
+      },
+      "key": "id",
+      "fields": ["rate"]
+    }
+  }],
+
+  "projection": {
+    // "type": "equalEarth",
+    "type": "albersUsa"
+  },
+  "mark": "geoshape",
+  "encoding": {
+    "color": {
+      "type": "quantitative",
+      "field": "rate",
+      // "scale": {
+      //   "domainMid": 3250,
+      //   "range": "diverging"
+      // }
+    }
+  }
+}
