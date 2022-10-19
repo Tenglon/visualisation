@@ -1,0 +1,22 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  // "data": {"url": "data/lookup_groups.csv"},
+  "data": {"url": "https://raw.githubusercontent.com/Tenglon/visualisation/main/confirmed_cases_count_by_postcode.tsv"},
+  "transform": [{
+    "lookup": "postcode",
+    "from": {
+      // "data": {"url": "data/lookup_people.csv"},
+      // "key": "name",
+      // "fields": ["age", "height"]
+      "data": {"url": "https://raw.githubusercontent.com/Tenglon/visualisation/main/confirmed_cases_count_by_postcode.tsv"},
+      "key": "postcode",
+      "fields": ["postcode", "confirmed_cases_count"]
+    }
+  }],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "postcode"},
+    // "y": {"field": "age", "aggregate": "mean"}
+    "y": {"field": "confirmed_cases_count", "aggregate":"sum"}
+  }
+}
